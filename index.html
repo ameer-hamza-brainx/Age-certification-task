@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS task</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+    <form name="myForm">
+        <h3>Age Certification </h3>
+        <div>
+            <label>Enter your Birth Date</label>
+            <input type="number" name="birthDate" id="date">
+            <span class="error" id="dateError"></span>
+        </div>
+        <div>
+            <label>Enter your Birth Month</label>
+            <input type="number" name="birthDate" id="month" >
+            <span class="error" id="monthError"></span>
+
+        </div>
+        <div>
+            <label>Enter your Birth Year</label>
+            <input type="number" name="birthDate" id="year">
+            <span class="error" id="yearError"></span>
+
+        </div>
+        <div>
+            <input type="submit" id="btn">
+        </div>
+    </form>
 </body>
 </html>
