@@ -2,13 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("btn").addEventListener("click", function(event){
     event.preventDefault()
     const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth();
-    const currentDay = currentDate.getDate();
     let dateFlag = false;
     let monthFlag = false;
     let yearFlag = false;
-    // console.log(currentYear);
 
     let dateValue = document.getElementById("date").value;
     let monthValue = document.getElementById("month").value;
@@ -16,7 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let dateError = document.getElementById("dateError");
     let monthError = document.getElementById("monthError");
     let yearError = document.getElementById("yearError");
-    
+
+    const birthDate = new Date(yearValue+"-"+monthValue+"-"+dateValue);
+    const difference = currentDate-birthDate;
+    const differenceInDays = difference / (1000 * 60 * 60 * 24);
+    const differenceInYears = differenceInDays/365;
+
     dateValue === ""?dateError.innerHTML = "Required Field!":dateError.innerHTML = "";
     monthValue === ""?monthError.innerHTML = "Required Field!":monthError.innerHTML = "";
     yearValue === ""?yearError.innerHTML = "Required Field!":yearError.innerHTML = "";
@@ -32,14 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if(yearValue!=="")
     {
-      yearValue > 2024?yearError.innerHTML = "Enter value less than current year":yearError.innerHTML = "";
-      yearValue<currentYear?yearFlag=true:yearFlag=false;
+      yearValue > currentDate.getFullYear()?yearError.innerHTML = "Enter value less than current year":yearError.innerHTML = "";
+      yearValue<currentDate.getFullYear()?yearFlag=true:yearFlag=false;
 
     }
       // console.log("passed"+currentYear+""+Number(yearValue));
     if(dateFlag && monthFlag && yearFlag)
     {
-      if(currentYear-Number(yearValue)>15)
+      if(differenceInYears>15)
       {
         window.location.href = "https://www.google.com";
       }
