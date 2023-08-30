@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if(yearValue!=="")
     {
-      yearValue > currentDate.getFullYear()?yearError.innerHTML = "Enter value less than current year":yearError.innerHTML = "";
-      yearValue<currentDate.getFullYear()?yearFlag=true:yearFlag=false;
+      yearValue > currentDate.getFullYear() || yearValue<1?yearError.innerHTML = "Enter value between 1 and "+currentDate.getFullYear():yearError.innerHTML = "";
+      yearValue<currentDate.getFullYear() && yearValue>0?yearFlag=true:yearFlag=false;
 
     }
-      // console.log("passed"+currentYear+""+Number(yearValue));
+      console.log(differenceInYears);
     if(dateFlag && monthFlag && yearFlag)
     {
       if(differenceInYears>15)
